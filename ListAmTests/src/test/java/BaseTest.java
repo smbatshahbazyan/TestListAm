@@ -11,7 +11,7 @@ import java.time.Duration;
 public class BaseTest {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    Actions action;
+    protected Actions action;
 
     @BeforeSuite
     public void setupChromeDriverTest() {
@@ -22,7 +22,7 @@ public class BaseTest {
     }
 
     @AfterSuite
-    public void closeChromeDriverTest() throws InterruptedException {
+    public void closeChromeDriverTest() {
         if (driver != null) {
             driver.quit();
             driver = null;
