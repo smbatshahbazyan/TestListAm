@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class ListAmHomePage extends ListAM {
 
     private final static String HOME_PAGE_URL = "https://www.list.am/";
-    private final static String ENGLISH_BTN_SELECTOR_XPATH = "//div[@id='dlgLangSel']//a[@href='/en/']//div[text()='English']";
+    private final static String ENGLISH_BTN_SELECTOR_XPATH = "//div[@id='dlgLangSel']//div[text()='English']";
     private final static String ELECTRONIC_BTN_SELECTOR_XPATH = "//div[@id='menu']//a[text()='Electronics']";
     private final static String NOTEBOOK_BTN_SELECTOR_TXT = "Notebooks";
 
