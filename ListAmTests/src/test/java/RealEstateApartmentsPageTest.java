@@ -1,13 +1,16 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pageObjects.Categories.RealEstate;
+import pageObjects.Categories.HomePage;
 
-public class ApartmantsPageTest extends BaseTest {
+public class RealEstateApartmentsPageTest extends BaseTest {
     @Test()
     public void AgencyTest() {
         HomePage homePage = new HomePage(driver);
         homePage.selectLanguage("English");
-        ApartmentsPage apartmentsPage = new ApartmentsPage(driver);
-        apartmentsPage.chooseApartmentsFromRealEstate();
+        homePage.hoverToCategory("Real Estate");
+        homePage.selectSubCategory("Apartments");
+        RealEstate apartmentsPage = new RealEstate(driver);
         apartmentsPage.chooseAgencyLabel();
         apartmentsPage.getItemsSize();
         apartmentsPage.getItemsWithAgencySign();

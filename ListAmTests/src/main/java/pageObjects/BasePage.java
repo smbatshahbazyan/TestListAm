@@ -1,21 +1,21 @@
+package pageObjects;
+
+import helpers.MyWait;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-
 public abstract class BasePage {
-    protected static WebDriver driver;
+    protected WebDriver driver;
     private final static String HOME_PAGE_URL = "https://www.list.am/";
+    protected String languageSelector = "//div[@id='dlgLangSel']//div[text()='%s']";
 
-    public WebDriverWait myWait() {
-        return new WebDriverWait(driver, Duration.ofSeconds(7));
-    }
-
-    public Actions actions() {
-        return new Actions(driver);
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
     }
 
     void openHelp() {
@@ -35,7 +35,7 @@ public abstract class BasePage {
     }
 
     public void selectLanguage(String language) {
-        By languageBtn = By.xpath(String.format("//div[@id='dlgLangSel']//div[text()='%s']", language));
-        myWait().until(ExpectedConditions.elementToBeClickable(languageBtn)).click();
+        By languageBtn = By.xpath(String.format(languageSelector, language));
+        MyWait.waitToBeClickable(driver, languageBtn).click();
     }
 }

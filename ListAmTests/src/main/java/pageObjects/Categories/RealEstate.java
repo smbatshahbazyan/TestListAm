@@ -1,38 +1,37 @@
+package pageObjects.Categories;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class ApartmentsPage extends CategoryPage {
-    ApartmentsPage(WebDriver driver) {
-        BasePage.driver = driver;
+public class RealEstate extends ResultPage {
+    @FindBy(xpath = "//label[text()='Agency']")
+    WebElement labelBtnLct;
+    @FindBy(xpath = "//div[@id ='contentr']//div[@class = 'clabel']")
+    List<WebElement> itemsForChangingAgencySign;
+    @FindBy(xpath = "//div[@class = 'gl']/a[@target = '_blank']/div[text()='Agency']")
+    List<WebElement> itemsWithAgencySign;
 
-    }
-
-    public void chooseApartmentsFromRealEstate() {
-        WebElement categoryElem = driver.findElement(By.xpath("//div[@id='menu']//a[text()='Real Estate']"));
-        By subCategoryElem = By.xpath("//div[@id='menu']//div[./b[text()='For Rent']]//a[text()='Apartments']");
-        actions().moveToElement(categoryElem).perform();
-        myWait().until(ExpectedConditions.elementToBeClickable(subCategoryElem)).click();
+    public RealEstate(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
     }
 
     public void chooseAgencyLabel() {
-        By labelBtnLct = By.xpath("//label[text()='Agency']");
-        driver.findElement(labelBtnLct).click();
+        labelBtnLct.click();
     }
 
     public void changeAgencySignToPrivate() {
-        List<WebElement> itemsForChangingAgencySign = driver.findElements(By.xpath("//div[@id ='contentr']//div[@class = 'clabel']"));
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("var ele = arguments[0]; ele.innerHTML = 'Private';", itemsForChangingAgencySign.get(55));
     }
 
     public int getItemsWithAgencySign() {
         changeAgencySignToPrivate();
-        List<WebElement> itemsWithAgencySign = driver.findElements(By.xpath("//div[@class = 'gl']/a[@target = '_blank']/div[text()='Agency']"));
         return itemsWithAgencySign.size();
     }
 
@@ -45,11 +44,9 @@ public class ApartmentsPage extends CategoryPage {
             } else {
                 WebElement itemWithoutAgency = driver.findElement(By.xpath("//div[@class = 'gl']/a[@target = '_blank'][" + i + "]/div[@class='l']"));
                 message = itemWithoutAgency.getText();
+                break;
             }
-            break;
         }
         return message;
     }
-
-
 }
