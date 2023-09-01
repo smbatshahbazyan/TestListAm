@@ -1,4 +1,4 @@
-package pageObjects.Categories;
+package pageobjects.categorieresultpages;
 
 import helpers.MyWait;
 import org.openqa.selenium.By;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class Electronics extends ResultPage {
+public class ElectronicsResultPage extends ResultPage {
     @FindBy(xpath = "//input[@id='idprice1']")
     protected WebElement priceFromSelector;
     @FindBy(id = "idprice2")
@@ -21,7 +21,7 @@ public class Electronics extends ResultPage {
     protected String currencySelectorText = "//div[contains(@data-name, '%s')]";
     String locationSelectorText = "//div[div[text()='Location']]//div[text()='%s']";
 
-    public Electronics(WebDriver driver) {
+    public ElectronicsResultPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }

@@ -1,4 +1,4 @@
-package pageObjects.Categories;
+package pageobjects.categorieresultpages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,15 +8,15 @@ import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
 
-public class RealEstate extends ResultPage {
+public class RealEstateResultPage extends ResultPage {
     @FindBy(xpath = "//label[text()='Agency']")
-    WebElement labelBtnLct;
+    protected WebElement labelBtnLct;
     @FindBy(xpath = "//div[@id ='contentr']//div[@class = 'clabel']")
-    List<WebElement> itemsForChangingAgencySign;
+    protected List<WebElement> itemsForChangingAgencySign;
     @FindBy(xpath = "//div[@class = 'gl']/a[@target = '_blank']/div[text()='Agency']")
-    List<WebElement> itemsWithAgencySign;
+    protected List<WebElement> itemsWithAgencySign;
 
-    public RealEstate(WebDriver driver) {
+    public RealEstateResultPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
     }

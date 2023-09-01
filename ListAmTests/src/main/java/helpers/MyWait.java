@@ -9,22 +9,19 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 
 public class MyWait {
-   public static int timeWait = 7;
-    public static WebDriverWait explicitWaitByElement;
+    private static final int timeWait = 7;
+    private static WebDriverWait explicitWaitByElement;
     public static WebElement waitToBeClickable(WebDriver driver, WebElement webElement) {
         explicitWaitByElement = new WebDriverWait(driver, Duration.ofSeconds(timeWait));
-        explicitWaitByElement.until(ExpectedConditions.elementToBeClickable(webElement));
-        return webElement;
+        return explicitWaitByElement.until(ExpectedConditions.elementToBeClickable(webElement));
     }
     public static WebElement waitToBeClickable(WebDriver driver, By by) {
         explicitWaitByElement = new WebDriverWait(driver, Duration.ofSeconds(timeWait));
-        explicitWaitByElement.until(ExpectedConditions.elementToBeClickable(by));
-        return driver.findElement(by);
+        return  explicitWaitByElement.until(ExpectedConditions.elementToBeClickable(by));
     }
     public static WebElement waitVisibilityOf(WebDriver driver, WebElement webElement) {
         explicitWaitByElement = new WebDriverWait(driver, Duration.ofSeconds(timeWait));
-        explicitWaitByElement.until(ExpectedConditions.visibilityOf(webElement));
-        return webElement;
+        return explicitWaitByElement.until(ExpectedConditions.visibilityOf(webElement));
     }
     public static void waitPresenceOfAllElementLocatedBy(WebDriver driver, By by) {
         explicitWaitByElement = new WebDriverWait(driver, Duration.ofSeconds(timeWait));

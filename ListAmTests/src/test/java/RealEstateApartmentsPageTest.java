@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.Categories.RealEstate;
-import pageObjects.Categories.HomePage;
+import pageobjects.categorieresultpages.RealEstateResultPage;
+import pageobjects.HomePage;
 
 public class RealEstateApartmentsPageTest extends BaseTest {
     @Test()
@@ -10,7 +10,7 @@ public class RealEstateApartmentsPageTest extends BaseTest {
         homePage.selectLanguage("English");
         homePage.hoverToCategory("Real Estate");
         homePage.selectSubCategory("Apartments");
-        RealEstate apartmentsPage = new RealEstate(driver);
+        RealEstateResultPage apartmentsPage = new RealEstateResultPage(driver);
         apartmentsPage.chooseAgencyLabel();
         apartmentsPage.getItemsSize();
         apartmentsPage.getItemsWithAgencySign();

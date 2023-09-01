@@ -1,7 +1,7 @@
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pageObjects.Categories.HomePage;
-import pageObjects.Categories.Electronics;
+import pageobjects.HomePage;
+import pageobjects.categorieresultpages.ElectronicsResultPage;
 
 public class ElectronicsNotebookPageLastElementTest extends BaseTest {
     @Test()
@@ -10,8 +10,8 @@ public class ElectronicsNotebookPageLastElementTest extends BaseTest {
         homePage.selectLanguage("English");
         homePage.hoverToCategory("Electronics");
         homePage.selectSubCategory("Notebooks");
-        Electronics notebooksPage = new Electronics(driver);
-        boolean lastElementIsClickable = notebooksPage.isLastElementClickable();
+        ElectronicsResultPage notebooksResultPage = new ElectronicsResultPage(driver);
+        boolean lastElementIsClickable = notebooksResultPage.isLastElementClickable();
         Assert.assertTrue(lastElementIsClickable, "Last element in Notebooks page isn't clickable");
     }
 }
