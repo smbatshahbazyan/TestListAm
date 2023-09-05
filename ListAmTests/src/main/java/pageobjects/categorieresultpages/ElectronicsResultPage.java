@@ -31,15 +31,6 @@ public class ElectronicsResultPage extends ResultPage {
         return notebookItems.get(notebookItems.size() - 1);
     }
 
-    public boolean isLastElementClickable() {
-        try {
-            MyWait.waitToBeClickable(driver, findLastElement());
-            return true;
-        } catch (TimeoutException e) {
-            return false;
-        }
-    }
-
     public void selectLocation(String location) {
         locationBtn.click();
         By locationSelectorXpath = By.xpath(String.format(locationSelectorText, location));

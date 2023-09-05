@@ -9,7 +9,7 @@ import java.util.Objects;
 
 public class ElectronicsNotebooksPageFilteringTest extends BaseTest {
 
-    @Test
+    @Test(groups = {"pageFilter"})
     public void notebooksPageFilterByCurrencyAndLocationTest() {
         HomePage homePage = new HomePage(driver);
         homePage.selectLanguage("English");
@@ -17,6 +17,7 @@ public class ElectronicsNotebooksPageFilteringTest extends BaseTest {
         homePage.selectSubCategory("Notebooks");
         ElectronicsResultPage notebooksResultPage = new ElectronicsResultPage(driver);
         notebooksResultPage.selectLocation("Kentron");
+        notebooksResultPage.getItemsSize();
         notebooksResultPage.selectPrice("200000", "500000");
         notebooksResultPage.selectCurrency("AMD");
         notebooksResultPage.getItemsSize();
