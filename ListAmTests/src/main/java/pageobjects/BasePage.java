@@ -2,6 +2,7 @@ package pageobjects;
 
 import helpers.MyWait;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -44,6 +45,14 @@ public abstract class BasePage{
     public void selectLanguage(String language) {
         By languageBtn = By.xpath(String.format(languageSelector, language));
         MyWait.waitToBeClickable(driver, languageBtn).click();
+    }
+    public boolean isElementClickable(WebElement element) {
+        try {
+            MyWait.waitToBeClickable(driver, element);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
     }
 
     public void hoverToElement(WebElement element) {

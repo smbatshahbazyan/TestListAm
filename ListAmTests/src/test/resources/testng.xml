@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Test">
+    <test name="Check pages filter">
+        <groups>
+            <run>
+                <include name="pageFilter"/>
+                <include name="statusCode"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="ElectronicsNotebooksPageFilteringTest"/>
+            <class name="restassuredtest.RestAssuredApiTest"/>
+        </classes>
+    </test>
+</suite>

@@ -4,7 +4,7 @@ import pageobjects.categorieresultpages.RealEstateResultPage;
 import pageobjects.HomePage;
 
 public class RealEstateApartmentsPageTest extends BaseTest {
-    @Test()
+    @Test(groups="pageFilter")
     public void AgencyTest() {
         HomePage homePage = new HomePage(driver);
         homePage.selectLanguage("English");
